@@ -1,35 +1,65 @@
 #!/usr/bin/env ruby
 
-puts 'Hello world!'
+class Board
+  attr_accessor :board
 
-puts 'Welcome to your Tic Tac Toe game'
+  def initialize
+    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  end
 
-puts 'Player 1 enter your name'
-Player1 = gets.chomp
+  def display_board
+    puts "#{board[0]} | #{board[1]} | #{board[2]}\n---------\n#{board[3]} | #{board[4]} | #{board[5]}\n---------
+    \n#{board[6]} | #{board[7]} | #{board[8]}"
+  end
+end
 
-puts 'Player 2 enter your name'
-Player2 = gets.chomp
+class Player
+  attr_reader :name, :sign
+  attr_accessor :record
 
-puts "#{Player1} uses X and #{Player1} uses O"
+  def initialize(name, sign)
+    @name = name
+    @sign = sign
+    @record = []
+  end
+end
 
-game_status = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+def win_check(win_combination, player_record)
+  win_combination.each do |win|
+    win.all? { |win1| player_record.include?(win1) }
+  end
+end
 
-puts "#{game_status[0]} | #{game_status[1]} | #{game_status[2]} \n ---------
-\n#{game_status[3]} | #{game_status[4]} | #{game_status[5]}\n ---------
-\n#{game_status[6]} | #{game_status[7]} | #{game_status[8]}"
+def Game_Cycle(player_1, player_2, board)
+  win_combination = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+  count = 1
+  game_on = true
 
-puts "#{Player1} make your move, select between 1-9 to play"
-Player1Move = gets.chomp
-game_status[Player1Move.to_i - 1] = 'X'
+  while (game_on = true)
+    puts board.display_board
+    current_player = (count % 2).odd? ? player_1 : player_2
+    puts "#{current_player.name} it is your turn, please make your move"
+    move = gets.strip
 
-puts "#{game_status[0]} | #{game_status[1]} | #{game_status[2]} \n ---------
-\n#{game_status[3]} | #{game_status[4]} | #{game_status[5]}\n ---------
-\n#{game_status[6]} | #{game_status[7]} | #{game_status[8]}"
+    if move != board.board[move.to_i - 1] && move != [/\d/]
+      puts 'Move is not valid, Make a valid move'
+    end
 
-puts "#{Player2} make your move, select between 1-9 to play"
-Player2Move = gets.chomp
-game_status[Player2Move.to_i - 1] = 'O'
+    current_player.record << move
+    board.board[move.to_i - 1] = current_player.sign
+    if win_check(win_combination, current_player.record) then game_on = false
+    count += 1
+  end
+end
 
-puts "#{game_status[0]} | #{game_status[1]} | #{game_status[2]} \n ---------
-\n#{game_status[3]} | #{game_status[4]} | #{game_status[5]}\n ---------
-\n#{game_status[6]} | #{game_status[7]} | #{game_status[8]}"
+# Player 1 details assignment
+puts 'Player 1 please input your name'
+name = gets.strip
+token = 'X'
+Player_1 = Player.new(name, token)
+puts 'Player 2 please input your name'
+name = gets.strip
+token = 'O'
+Player_2 = Player.new(name, token)
+game_board = Board.new
+Game_Cycle(player_1, player_2, game_board)
