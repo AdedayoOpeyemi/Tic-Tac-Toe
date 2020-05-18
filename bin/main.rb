@@ -30,7 +30,18 @@ def win_check(win_combination, player_record)
   end
 end
 
-def Game_Cycle(player_1, player_2, board)
+def Game_Cycle
+
+    puts 'Player 1 please input your name'
+    name = gets.strip
+    token = 'X'
+    player_1 |= Player.new(name, token)
+    puts 'Player 2 please input your name'
+    name = gets.strip
+    token = 'O'
+    player_2 |= Player.new(name, token)
+    game_board = Board.new
+
   win_combination = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
   count = 1
   game_on = true
@@ -52,14 +63,4 @@ def Game_Cycle(player_1, player_2, board)
   end
 end
 
-# Player 1 details assignment
-puts 'Player 1 please input your name'
-name = gets.strip
-token = 'X'
-Player_1 = Player.new(name, token)
-puts 'Player 2 please input your name'
-name = gets.strip
-token = 'O'
-Player_2 = Player.new(name, token)
-game_board = Board.new
-Game_Cycle(player_1, player_2, game_board)
+Game_Cycle
