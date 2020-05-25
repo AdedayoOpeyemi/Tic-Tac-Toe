@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require_relative '../lib/players'
+
 class Board
   attr_accessor :board
 
@@ -13,22 +15,13 @@ class Board
   end
 end
 
-class Player
-  attr_reader :name, :sign
-  attr_accessor :record
-
-  def initialize(name, sign)
-    @name = name
-    @sign = sign
-    @record = []
+class Game
+  def win_check(win_combination, player_record)
+    win_combination.each do |win|
+      win.all? { |win1| player_record.include?(win1) }
+    end
   end
-end
-
-def win_check(win_combination, player_record)
-  win_combination.each do |win|
-    win.all? { |win1| player_record.include?(win1) }
-  end
-end
+end  
 
 puts 'Player 1 please input your name'
 name = gets.strip
