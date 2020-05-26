@@ -16,6 +16,10 @@ WIN_COMBINATION = [
     end
   end
 
+  def draw?(counter)
+    counter == 9
+  end
+
 end
 
 # ADD THE NEXT AS A METHOD

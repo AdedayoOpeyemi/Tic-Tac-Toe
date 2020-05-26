@@ -44,6 +44,11 @@ class Board
       puts "#{current_player.name} is the winner"
       @game_over = true
     end
+
+    if @game_status.draw?(@count)
+        puts "The game is a draw"
+        @game_over = true
+    end
     @count += 1
   
     current_player
