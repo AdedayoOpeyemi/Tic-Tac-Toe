@@ -57,29 +57,11 @@ class Board
   def input_board
     move = gets.strip
     until @game_status.valid_move?(move, @board)
-        puts "Please enter a valid input between 1 to 9"
+        puts "Please enter a valid input between 1 to 9 that has not been taken"
         move = gets.strip
     end
     @board[move.to_i - 1] = current_player.sign
   end  
-
-#   while game_on
-#     puts `clear`
-#     puts game_board.display_board
-
-#     
-
-#     gamecheck = game_board.board[move.to_i - 1]
-#     puts 'Move is not valid, Make a valid move' unless move.to_i == gamecheck
-#     current_player.record << move.to_i
-#     game_board.board[move.to_i - 1] = current_player.sign
-    
-#     count += 1
-#     if count == 10
-#       puts 'The game is a draw'
-#       break
-#     end
-#   end
 
   def game_play
     welcome

@@ -17,7 +17,9 @@ WIN_COMBINATION = [
   end
 
   def valid_move?(input, board)
-    input.to_i > 0 && input.to_i < 10
+    input.to_i > 0 &&
+    input.to_i < 10 &&
+    board[input.to_i - 1].is_a?(Integer)
   end
 
   def draw?(counter)
@@ -25,9 +27,3 @@ WIN_COMBINATION = [
   end
 
 end
-
-# ADD THE NEXT AS A METHOD
-#   if win_check(win_combination, current_player.record)
-#     puts '#{current_player.name} is the winner for this round'
-#     game_on = false
-#   end
