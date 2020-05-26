@@ -56,7 +56,10 @@ class Board
   
   def input_board
     move = gets.strip
-
+    until @game_status.valid_move?(move, @board)
+        puts "Please enter a valid input between 1 to 9"
+        move = gets.strip
+    end
     @board[move.to_i - 1] = current_player.sign
   end  
 

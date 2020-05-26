@@ -16,6 +16,10 @@ WIN_COMBINATION = [
     end
   end
 
+  def valid_move?(input, board)
+    input.to_i > 0 && input.to_i < 10
+  end
+
   def draw?(counter)
     counter == 9
   end
