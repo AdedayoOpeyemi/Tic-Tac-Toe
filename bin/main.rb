@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/players'
-require_relative '../lib/game'
+require_relative '../lib/game_status'
 
 class Board
   attr_accessor :board
@@ -9,6 +9,7 @@ class Board
   def initialize
       @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
       @count = 1
+      @game_status = Game_status.new
   end
 
   def display_board
@@ -36,10 +37,15 @@ class Board
   def turn
     game_over = false
 
-    puts "#{current_player.name} it is your turn, please make your move"
+    puts "#{current_player.name} it is your turn, please make your move choosing between 1 to 9"
     input_board
     display_board
+    if @game_status.win_check(@board)
+      puts "#{current_player.name} is the winner"
+      @game_over = true
+    end
     @count += 1
+  
     current_player
   end
   
