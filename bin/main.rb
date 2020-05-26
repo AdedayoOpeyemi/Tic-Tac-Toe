@@ -7,35 +7,35 @@ class Board
   attr_accessor :board
 
   def initialize
-      @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-      @count = 1
-      @game_status = Game_status.new
+    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    @count = 1
+    @game_status = GameStatus.new
   end
 
   def display_board
-      puts "#{@board[0]} | #{@board[1]} | #{@board[2]}\n---------\n#{@board[3]} | #{@board[4]} | #{@board[5]}\n---------\n#{@board[6]} | #{@board[7]} | #{@board[8]}"
+    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}\n---------\n#{@board[3]} | #{@board[4]} | #{@board[5]}\n---------\n#{@board[6]} | #{@board[7]} | #{@board[8]}"
   end
 
   def welcome
     puts 'Welcome to Tic Tac Toe'
     puts 'Player X please input your name'
     name = gets.strip
-    @player_1 = Player.new(name, "X")
+    @player1 = Player.new(name, 'X')
     puts 'Player O please input your name'
     name = gets.strip
-    @player_2 = Player.new(name, "O")
+    @player2 = Player.new(name, 'O')
   end
 
   def current_player
     current_player = if @count.odd?
-        @player_1
-      else
-        @player_2
-      end
-    end
+                       @player1
+                     else
+                       @player2
+                     end
+  end
 
   def turn
-    game_over = false
+    @game_over = false
 
     puts "#{current_player.name} it is your turn, please make your move choosing between 1 to 9"
     input_board
@@ -46,32 +46,30 @@ class Board
     end
 
     if @game_status.draw?(@count)
-        puts "The game is a draw"
-        @game_over = true
+      puts 'The game is a draw'
+      @game_over = true
     end
     @count += 1
-  
     current_player
   end
-  
+
   def input_board
     move = gets.strip
     until @game_status.valid_move?(move, @board)
-        puts "Please enter a valid input between 1 to 9 that has not been taken"
-        move = gets.strip
+      puts 'Please enter a valid input between 1 to 9 that has not been taken'
+      move = gets.strip
     end
     @board[move.to_i - 1] = current_player.sign
-  end  
+  end
 
   def game_play
     welcome
     puts `clear`
     display_board
     until @game_over
-        turn
+      turn
     end
   end
-
 end
 
 game_board = Board.new

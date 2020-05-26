@@ -5,5 +5,4 @@ class Player
     @name = name
     @sign = sign
   end
-  
 end
