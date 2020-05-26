@@ -37,12 +37,17 @@ class Board
     game_over = false
 
     puts "#{current_player.name} it is your turn, please make your move"
-    move = gets.strip
+    input_board
+    display_board
     @count += 1
+    current_player
   end
   
-#   
-#   
+  def input_board
+    move = gets.strip
+
+    @board[move.to_i - 1] = current_player.sign
+  end  
 
 #   while game_on
 #     puts `clear`
