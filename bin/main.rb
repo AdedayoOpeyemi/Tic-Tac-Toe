@@ -53,9 +53,5 @@ class Board
 
 end
 
-
-
-
-
 game_board = Board.new
 board.play
