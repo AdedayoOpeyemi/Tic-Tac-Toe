@@ -13,25 +13,37 @@ class Board
   end
 
   def display_board
-    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}\n---------\n#{@board[3]} | #{@board[4]} | #{@board[5]}\n---------\n#{@board[6]} | #{@board[7]} | #{@board[8]}"
+    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
+    puts '---------'
+    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
+    puts '---------'
+    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
   end
 
   def welcome
     puts 'Welcome to Tic Tac Toe'
+    puts ''
+  end
+
+  def player_setup
     puts 'Player X please input your name'
     name = gets.strip
     @player1 = Player.new(name, 'X')
     puts 'Player O please input your name'
     name = gets.strip
+    until name != @player1.name
+      puts 'please input a different name, that name is already taken'
+      name = gets.strip
+    end
     @player2 = Player.new(name, 'O')
   end
 
   def current_player
-    current_player = if @count.odd?
-                       @player1
-                     else
-                       @player2
-                     end
+    if @count.odd?
+      @player1
+    else
+      @player2
+    end
   end
 
   def turn
@@ -42,12 +54,12 @@ class Board
     display_board
     if @game_status.win_check(@board)
       puts "#{current_player.name} is the winner"
-      @game_over = true
+      return @game_over = true
     end
 
     if @game_status.draw?(@count)
       puts 'The game is a draw'
-      @game_over = true
+      return @game_over = true
     end
     @count += 1
     current_player
@@ -64,11 +76,9 @@ class Board
 
   def game_play
     welcome
-    puts `clear`
+    player_setup
     display_board
-    until @game_over
-      turn
-    end
+    turn until @game_over
   end
 end
 
