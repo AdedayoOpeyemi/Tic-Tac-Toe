@@ -46,24 +46,10 @@ class Board
     end
   end
 
-  def turn
-    @game_over = false
-
-    puts "#{current_player.name} it is your turn, please make your move choosing between 1 to 9"
-    input_board
-    display_board
-    if @game_status.win_check(@board)
-      puts "#{current_player.name} is the winner"
-      return @game_over = true
-    end
-
-    if @game_status.draw?(@count)
-      puts 'The game is a draw'
-      return @game_over = true
-    end
-    @count += 1
-    current_player
-  end
+#   def turn
+#     @game_over = false
+#     puts "#{current_player.name} it is your turn, please make your move choosing between 1 to 9"
+#   end
 
   def input_board
     move = gets.strip
@@ -78,7 +64,31 @@ class Board
     welcome
     player_setup
     display_board
-    turn until @game_over
+    loop do
+    #   turn
+      @game_over = false
+      puts "#{current_player.name} it is your turn, please make your move choosing between 1 to 9"
+      input_board
+      display_board
+
+      if @game_status.win_check(@board)
+        puts "#{current_player.name} is the winner"
+        return @game_over = true
+      end
+
+      if @game_status.draw?(@count)
+        puts 'The game is a draw'
+        return @game_over = true
+      end
+
+      break if @game_over
+
+      @count += 1
+      current_player
+    end
+
+
+    # turn until @game_over
   end
 end
 
