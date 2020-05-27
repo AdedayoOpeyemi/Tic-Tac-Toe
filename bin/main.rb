@@ -4,7 +4,7 @@ require_relative '../lib/players'
 require_relative '../lib/game_status'
 
 class Board
-  attr_accessor :board
+  attr_reader :board
 
   def initialize
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -13,11 +13,11 @@ class Board
   end
 
   def display_board
-    puts "#{@board[0]} | #{@board[1]} | #{@board[2]}"
-    puts '---------'
-    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
-    puts '---------'
-    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
+    puts " #{board[0]} | #{board[1]} | #{board[2]}",
+         '-' * 11,
+         " #{board[3]} | #{board[4]} | #{board[5]}",
+         '-' * 11,
+         " #{board[6]} | #{board[7]} | #{board[8]}"
   end
 
   def welcome
@@ -84,3 +84,8 @@ end
 
 game_board = Board.new
 game_board.game_play
+
+# game_board.welcome
+# game_board.player_setup
+# game_board.display_board
+# game_board.turn until @game_over
