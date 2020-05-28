@@ -1,5 +1,3 @@
-# rubocop: disable Style/ClassVars
-
 class Board
   attr_reader :board
 
@@ -25,5 +23,3 @@ class Board
     @board[input.to_i - 1] = player.sign
   end
 end
-
-# rubocop: enable Style/ClassVars
