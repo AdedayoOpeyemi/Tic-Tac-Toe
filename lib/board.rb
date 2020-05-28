@@ -1,3 +1,5 @@
+# rubocop: disable Style/ClassVars
+
 class Board
   attr_reader :board
 
@@ -12,10 +14,10 @@ class Board
     #      '-' * 11,
     #      " #{board[6]} | #{board[7]} | #{board[8]}"
 
-    " #{board[0]} | #{board[1]} | #{board[2]} \n"
-     '-----------\n'
-      "#{board[3]} | #{board[4]} | #{board[5]} \n"
-       '-----------\n'
+    "#{board[0]} | #{board[1]} | #{board[2]}" \
+     "\n-----------\n" \
+      "#{board[3]} | #{board[4]} | #{board[5]}" \
+       "\n-----------\n" \
         "#{board[6]} | #{board[7]} | #{board[8]}"
   end
 
@@ -23,3 +25,5 @@ class Board
     @board[input.to_i - 1] = player.sign
   end
 end
+
+# rubocop: enable Style/ClassVars
