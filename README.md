@@ -2,7 +2,7 @@
 
 > Microverse Object Oriented Programming Ruby Tic Tac Toe game.
 
-![screenshot](./app_screenshot.png)
+![screenshot](./screenshot.png)
 
 Additional description about the project and its features.
 
@@ -22,15 +22,13 @@ To get a local copy up and running follow these simple example steps.
 
 👤 **Opeyemi Oyelesi**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [Opeyemi Oyelesi](https://github.com/githubhandle)
+- Linkedin: [Opeyemi Oyelesi](https://www.linkedin.com/in/opeyemioyelesi/)
 
 👤 **Angel Mora**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [Angel Mora](https://github.com/angel-mora)
+- Linkedin: [Angel Mora](https://www.linkedin.com/in/angelmoma/)
 
 ## 🤝 Contributing
 
