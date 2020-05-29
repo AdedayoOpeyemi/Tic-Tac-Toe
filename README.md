@@ -4,7 +4,11 @@
 
 ![screenshot](./screenshot.png)
 
-Additional description about the project and its features.
+This project required to use Object Oriented Design to follow good practices in programming, such as:
+
+- DRY (Don't Repeat Yourself)
+- Single Responsibility Rule (a class does one only thing)
+- No classes or methods on executable file
 
 ## Built With
 
