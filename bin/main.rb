@@ -1,67 +1,45 @@
 #!/usr/bin/env ruby
 
-class Board
-  attr_accessor :board
+require_relative '../lib/players'
+require_relative '../lib/game_status'
+require_relative '../lib/board'
 
-  def initialize
-    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  end
-
-  def display_board
-    puts "#{board[0]} | #{board[1]} | #{board[2]}\n---------\n#{board[3]} | #{board[4]} | #{board[5]}\n---------
-    \n#{board[6]} | #{board[7]} | #{board[8]}"
-  end
-end
-
-class Player
-  attr_reader :name, :sign
-  attr_accessor :record
-
-  def initialize(name, sign)
-    @name = name
-    @sign = sign
-    @record = []
-  end
-end
-
-def win_check(win_combination, player_record)
-  win_combination.each do |win|
-    win.all? { |win1| player_record.include?(win1) }
-  end
-end
-
-puts 'Player 1 please input your name'
-name = gets.strip
-token = 'X'
-Player_1 = Player.new(name, token)
-puts 'Player 2 please input your name'
-name = gets.strip
-token = 'O'
-Player_2 = Player.new(name, token)
 game_board = Board.new
-# win_combination = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+puts 'Welcome to Tic Tac Toe'
+puts ''
+puts 'Player X please input your name'
+name = gets.strip
+@player1 = Player.new(name, 'X')
+puts 'Player O please input your name'
+name = gets.strip
+until name != @player1.name
+  puts 'please input a different name, that name is already taken'
+  name = gets.strip
+end
+@player2 = Player.new(name, 'O')
+puts game_board.display_board
 count = 1
-game_on = true
-while game_on
-  puts game_board.display_board
-  current_player = if count.odd?
-                     Player_1
-                   else
-                     Player_2
-                   end
-  puts "#{current_player.name} it is your turn, please make your move"
+
+loop do
+  game_over = false
+  game_status = GameStatus.new
+  to_play = Player.current_player(count)
+  puts "#{to_play.name} it is your turn, please make your move choosing between 1 to 9"
   move = gets.strip
-  gamecheck = game_board.board[move.to_i - 1]
-  puts 'Move is not valid, Make a valid move' unless move.to_i == gamecheck
-  current_player.record << move.to_i
-  game_board.board[move.to_i - 1] = current_player.sign
-  #   if win_check(win_combination, current_player.record)
-  #     puts '#{current_player.name} is the winner for this round'
-  #     game_on = false
-  #   end
-  count += 1
-  if count == 10
-    puts 'The game is a draw'
-    break
+  until game_status.valid_move?(move, game_board.board)
+    puts 'Please enter a valid input between 1 to 9 that has not been taken'
+    move = gets.strip
   end
+  game_board.input_board(to_play, move)
+  puts game_board.display_board
+  if game_status.win_check(game_board.board)
+    puts "#{to_play.name} is the winner"
+    return game_over = true
+  end
+  if game_status.draw?(count) && !game_status.win_check(game_board.board)
+    puts 'The game is a draw'
+    return game_over = true
+  end
+  count += 1
+  break if game_over
 end
