@@ -6,12 +6,6 @@ class Board
   end
 
   def display_board
-    # return " #{board[0]} | #{board[1]} | #{board[2]}",
-    #      '-' * 11,
-    #      " #{board[3]} | #{board[4]} | #{board[5]}",
-    #      '-' * 11,
-    #      " #{board[6]} | #{board[7]} | #{board[8]}"
-
     "#{board[0]} | #{board[1]} | #{board[2]}" \
      "\n-----------\n" \
       "#{board[3]} | #{board[4]} | #{board[5]}" \
