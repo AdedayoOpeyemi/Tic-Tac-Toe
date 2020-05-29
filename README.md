@@ -1,57 +1,52 @@
-# Project Name
+# Tic Tac Toe
 
-> One paragraph statement about the project.
+> Microverse Object Oriented Programming Ruby Tic Tac Toe game.
 
-![screenshot](./app_screenshot.png)
+![screenshot](./screenshot.png)
 
-Additional description about the project and its features.
+This project required to use Object Oriented Design to follow good practices in programming, such as:
+
+- DRY (Don't Repeat Yourself)
+- Single Responsibility Rule (a class does one only thing)
+- No classes or methods on executable file
 
 ## Built With
 
-- Major languages,
-- frameworks,
-- technologies used
+- Ruby
+- Rubocop
 
-## Live Demo
+## Rules
 
-[Live Demo Link](https://livedemo.com)
+- 3 x 3 grid as board
+- First player is X, second player is O. Players put their marks in numbered squares.
+- First player to get 3 of her marks in a row (up, down, across, or diagonally) wins.
+- 9 squares full mean the game is over. If no winner, it's a draw.
 
+## Flow
+
+- Player's name asked
+- Board displayed before each player marks a cell to check current game status.
+- Players mark available cell by entering its number.
+- Game over i there is a winner or a tie after each turn.
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+- Create a local clone of the repo.
+- Run it through `main.rb` in your terminal.
 
 ## Authors
 
-👤 **Author1**
+👤 **Opeyemi Oyelesi**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [Opeyemi Oyelesi](https://github.com/githubhandle)
+- Linkedin: [Opeyemi Oyelesi](https://www.linkedin.com/in/opeyemioyelesi/)
 
-👤 **Author2**
+👤 **Angel Mora**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [Angel Mora](https://github.com/angel-mora)
+- Linkedin: [Angel Mora](https://www.linkedin.com/in/angelmoma/)
 
 ## 🤝 Contributing
 
@@ -65,10 +60,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Thanks to Microverse and its awesome community
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
