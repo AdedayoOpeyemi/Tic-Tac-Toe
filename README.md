@@ -15,6 +15,20 @@ This project required to use Object Oriented Design to follow good practices in 
 - Ruby
 - Rubocop
 
+## Rules
+
+- 3 x 3 grid as board
+- First player is X, second player is O. Players put their marks in numbered squares.
+- First player to get 3 of her marks in a row (up, down, across, or diagonally) wins.
+- 9 squares full mean the game is over. If no winner, it's a draw.
+
+## Flow
+
+- Player's name asked
+- Board displayed before each player marks a cell to check current game status.
+- Players mark available cell by entering its number.
+- Game over i there is a winner or a tie after each turn.
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
